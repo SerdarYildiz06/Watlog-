@@ -12,4 +12,8 @@ class ColorConstants {
   final Color cardBackgroundColor = const Color(0xFF232323);
   final Color red = const Color(0xFFe93737);
   final Color grey = const Color(0xFF595959);
+  final Color iconColor = Colors.white;
+  final Color black = Colors.black;
+  final Color darkGreen = const Color(0xFF175220);
+  final Color primarContailerColor = const Color(0xFF153823);
 }

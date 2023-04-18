@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:watlog/utils/colors.dart';
+import 'package:watlog/view/settings_view.dart';
 
 class ListScreen extends StatelessWidget {
   const ListScreen({super.key});
@@ -43,7 +44,9 @@ class ListScreen extends StatelessWidget {
                         width: 20.w,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingView()));
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,

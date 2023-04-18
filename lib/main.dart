@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:watlog/slect_person_screen.dart';
+import 'package:watlog/view/buy_premium_view.dart';
+import 'package:watlog/view/select_person_view.dart';
 import 'package:watlog/utils/colors.dart';
 
 void main() {
@@ -19,10 +20,23 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
+          routes: {
+            '/premium': (context) => const BuyPremiumView(),
+          },
           debugShowCheckedModeBanner: false,
           title: 'First Method',
           // You can use the library anywhere in the app even in theme
           theme: ThemeData(
+            radioTheme: RadioThemeData(
+              fillColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.selected)) {
+                    return ColorConstants.instance.green; // selected color
+                  }
+                  return Colors.grey; // unselected color
+                },
+              ),
+            ),
             scaffoldBackgroundColor: ColorConstants.instance.bacgroundColors,
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,

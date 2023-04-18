@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:watlog/utils/colors.dart';
 import 'package:watlog/utils/widget/custom_button.dart';
 
-import 'list_screen.dart';
+import 'person_list.dart';
 
 class SlectPersonScreen extends StatelessWidget {
   const SlectPersonScreen({super.key});
