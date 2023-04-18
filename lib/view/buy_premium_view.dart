@@ -142,50 +142,6 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                       SizedBox(
                         width: 12.w,
                       ),
-                      // Expanded(
-                      //   child: Stack(
-                      //     children: [
-                      //       const Positioned.fill(
-                      //         child: FlutterLogo(),
-                      //       ),
-                      //       Container(
-                      //         decoration: BoxDecoration(
-                      //           borderRadius: BorderRadius.circular(15),
-                      //           border: Border.all(
-                      //             color: selectedPackage == 1 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
-                      //             width: 2,
-                      //           ),
-                      //         ),
-                      //         child: GestureDetector(
-                      //           onTap: () {
-                      //             setState(() {
-                      //               selectedPackage = 1;
-                      //             });
-                      //           },
-                      //           child: Padding(
-                      //             padding: const EdgeInsets.symmetric(vertical: 40),
-                      //             child: Column(
-                      //               mainAxisAlignment: MainAxisAlignment.center,
-                      //               children: [
-                      //                 Text(
-                      //                   "Monthly",
-                      //                   style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                      //                 ),
-                      //                 SizedBox(
-                      //                   height: 5.h,
-                      //                 ),
-                      //                 Text(
-                      //                   "59.99\$",
-                      //                   style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
@@ -223,7 +179,6 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                           ),
                         ),
                       ),
-
                       SizedBox(
                         width: 12.w,
                       ),
