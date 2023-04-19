@@ -57,7 +57,9 @@ class SettingView extends StatelessWidget {
                 ),
               ),
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, 'help_center');
+                },
                 title: Text(
                   'Help Center',
                   style: TextStyle(fontSize: 18.sp),

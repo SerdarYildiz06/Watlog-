@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:watlog/utils/widget/custom_button.dart';
 
 import '../utils/colors.dart';
+import 'compare_numbers_view.dart';
 
 class BuyPremiumView extends StatefulWidget {
   const BuyPremiumView({super.key});
@@ -20,7 +21,15 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Watlog'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.close),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -90,7 +99,7 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                     'View all activities with graphical statistics',
                     style: TextStyle(
                       fontSize: 15.sp,
-                      color: ColorConstants.instance.grey,
+                      color: ColorConstants.instance.textColor,
                     ),
                   ),
                   const SizedBox(
@@ -101,40 +110,39 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                     height: 10.h,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: selectedPackage == 0 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
-                              width: 2,
-                            ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(
+                            color: selectedPackage == 0 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
+                            width: 2,
                           ),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedPackage = 0;
-                              });
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 40),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Weekly",
-                                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    height: 5.h,
-                                  ),
-                                  Text(
-                                    "59.99\$",
-                                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedPackage = 0;
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Weekly",
+                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(
+                                  "59.99\$",
+                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -142,39 +150,37 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                       SizedBox(
                         width: 12.w,
                       ),
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: selectedPackage == 2 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
-                              width: 2,
-                            ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(
+                            color: selectedPackage == 2 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
+                            width: 2,
                           ),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedPackage = 2;
-                              });
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 40),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Weekly",
-                                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    height: 5.h,
-                                  ),
-                                  Text(
-                                    "59.99\$",
-                                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedPackage = 2;
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Weekly",
+                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(
+                                  "59.99\$",
+                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -182,39 +188,37 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                       SizedBox(
                         width: 12.w,
                       ),
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: selectedPackage == 2 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
-                              width: 2,
-                            ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(
+                            color: selectedPackage == 2 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
+                            width: 2,
                           ),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedPackage = 2;
-                              });
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 40),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Weekly",
-                                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    height: 5.h,
-                                  ),
-                                  Text(
-                                    "59.99\$",
-                                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedPackage = 2;
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Weekly",
+                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(
+                                  "59.99\$",
+                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -226,7 +230,9 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                   ),
                   CustomButton(
                     text: 'CONTINUE',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const CompareNumbersView()));
+                    },
                   ),
                 ],
               ),

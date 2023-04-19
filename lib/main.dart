@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:watlog/view/buy_premium_view.dart';
+import 'package:watlog/view/detailed_statistics.dart';
+import 'package:watlog/view/help_center_view.dart';
 import 'package:watlog/view/select_person_view.dart';
 import 'package:watlog/utils/colors.dart';
 
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           routes: {
             '/premium': (context) => const BuyPremiumView(),
+            'help_center': (context) => const HelpCenterView(),
+            'detailed_statistics': (context) => const DetailedStatisticsView(),
           },
           debugShowCheckedModeBanner: false,
           title: 'First Method',
