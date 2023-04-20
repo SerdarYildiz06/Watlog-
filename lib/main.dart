@@ -45,6 +45,11 @@ class MyApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,
+              titleTextStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
             colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: ColorConstants.instance.bacgroundColors),

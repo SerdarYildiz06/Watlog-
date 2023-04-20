@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:watlog/view/daily_chart_page.dart';
 
 import '../utils/colors.dart';
 
@@ -168,14 +169,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                   child: TabBarView(
                     controller: _tabController,
                     children: [
-                      ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          return const PhoneLogCard();
-                        },
-                      ),
+                      DailyChart(),
                       ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
@@ -195,41 +189,35 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('  13 April'),
-                    Text('Today'),
-                  ],
-                ),
-                SfCartesianChart(
-                  primaryXAxis: CategoryAxis(
-                    majorGridLines: const MajorGridLines(width: 1, dashArray: <double>[3, 3]),
-                    minorGridLines: const MinorGridLines(width: 1, dashArray: <double>[3, 3]),
-                  ),
-                  primaryYAxis: CategoryAxis(
-                    edgeLabelPlacement: EdgeLabelPlacement.shift, // shift the first and last labels to the edge
 
-                    labelStyle: const TextStyle(fontSize: 16),
-                    labelPlacement: LabelPlacement.onTicks,
-                    arrangeByIndex: true,
-                    majorTickLines: const MajorTickLines(
-                      color: Colors.black,
-                      size: 1,
-                    ),
-                  ),
-                  series: <ChartSeries>[
-                    ColumnSeries<LunarData, String>(
-                      dataSource: data,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
-                      ),
-                      xValueMapper: (LunarData lunar, _) => lunar.day,
-                      yValueMapper: (LunarData lunar, _) => lunar.value,
-                    )
-                  ],
-                ),
+                // SfCartesianChart(
+                //   primaryXAxis: CategoryAxis(
+                //     majorGridLines: const MajorGridLines(width: 1, dashArray: <double>[3, 3]),
+                //     minorGridLines: const MinorGridLines(width: 1, dashArray: <double>[3, 3]),
+                //   ),
+                //   primaryYAxis: CategoryAxis(
+                //     edgeLabelPlacement: EdgeLabelPlacement.shift, // shift the first and last labels to the edge
+
+                //     labelStyle: const TextStyle(fontSize: 16),
+                //     labelPlacement: LabelPlacement.onTicks,
+                //     arrangeByIndex: true,
+                //     majorTickLines: const MajorTickLines(
+                //       color: Colors.black,
+                //       size: 1,
+                //     ),
+                //   ),
+                //   series: <ChartSeries>[
+                //     ColumnSeries<LunarData, String>(
+                //       dataSource: data,
+                //       borderRadius: const BorderRadius.only(
+                //         topLeft: Radius.circular(10),
+                //         topRight: Radius.circular(10),
+                //       ),
+                //       xValueMapper: (LunarData lunar, _) => lunar.day,
+                //       yValueMapper: (LunarData lunar, _) => lunar.value,
+                //     )
+                //   ],
+                // ),
               ],
             ),
           ),
