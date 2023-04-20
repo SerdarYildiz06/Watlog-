@@ -2,10 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:watlog/view/daily_chart_page.dart';
+import 'package:scroll_date_picker/scroll_date_picker.dart';
+import 'package:watlog/view/special_chart_view.dart';
+import 'package:watlog/view/weekly_chart_view.dart';
 
 import '../utils/colors.dart';
+import '../utils/widget/card_phone.dart';
+import 'daily_chart_page.dart';
 
 class CompareNumbersView extends StatefulWidget {
   const CompareNumbersView({super.key});
@@ -68,6 +71,45 @@ final List<DateTimeRange> bigDataList = getRandomSampleDataList();
 
 class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTickerProviderStateMixin {
   TabController? _tabController;
+  TextEditingController? _dateController;
+  DateTime _selectedDate = DateTime.now();
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Select Date'),
+          content: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: ListView(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: ScrollDatePicker(
+                    selectedDate: _selectedDate,
+                    locale: Locale('en'),
+                    onDateTimeChanged: (DateTime value) {
+                      _selectedDate = value;
+                    },
+                  ),
+                ),
+                ElevatedButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    _dateController?.text = _selectedDate.toString();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   final List<LunarData> data = [
     LunarData('Monday', 0),
     LunarData('Tuesday', 0),
@@ -80,14 +122,12 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -97,7 +137,10 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              await _showMyDialog();
+              //here
+            },
             icon: const Icon(Icons.calendar_month),
           ),
         ],
@@ -170,221 +213,13 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                     controller: _tabController,
                     children: [
                       DailyChart(),
-                      ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: 4,
-                        itemBuilder: (context, index) {
-                          return const PhoneLogCard();
-                        },
-                      ),
-                      ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: 3,
-                        itemBuilder: (context, index) {
-                          return const PhoneLogCard();
-                        },
-                      ),
+                      WeeklyChart(),
+                      SpecialChartView(),
                     ],
                   ),
                 ),
-
-                // SfCartesianChart(
-                //   primaryXAxis: CategoryAxis(
-                //     majorGridLines: const MajorGridLines(width: 1, dashArray: <double>[3, 3]),
-                //     minorGridLines: const MinorGridLines(width: 1, dashArray: <double>[3, 3]),
-                //   ),
-                //   primaryYAxis: CategoryAxis(
-                //     edgeLabelPlacement: EdgeLabelPlacement.shift, // shift the first and last labels to the edge
-
-                //     labelStyle: const TextStyle(fontSize: 16),
-                //     labelPlacement: LabelPlacement.onTicks,
-                //     arrangeByIndex: true,
-                //     majorTickLines: const MajorTickLines(
-                //       color: Colors.black,
-                //       size: 1,
-                //     ),
-                //   ),
-                //   series: <ChartSeries>[
-                //     ColumnSeries<LunarData, String>(
-                //       dataSource: data,
-                //       borderRadius: const BorderRadius.only(
-                //         topLeft: Radius.circular(10),
-                //         topRight: Radius.circular(10),
-                //       ),
-                //       xValueMapper: (LunarData lunar, _) => lunar.day,
-                //       yValueMapper: (LunarData lunar, _) => lunar.value,
-                //     )
-                //   ],
-                // ),
               ],
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class PhoneLogCard extends StatelessWidget {
-  const PhoneLogCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.h),
-      child: InkWell(
-        onTap: () {
-          Navigator.pushNamed(context, 'detailed_statistics');
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: ColorConstants.instance.cardBackgroundColor,
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.h),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Login',
-                      style: TextStyle(fontSize: 19.sp),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Selma',
-                          style: TextStyle(color: ColorConstants.instance.lightBlue, fontSize: 18.sp),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          '1',
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15.sp),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          'Supersky',
-                          style: TextStyle(color: ColorConstants.instance.orange, fontSize: 18.sp),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          '0',
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15.sp),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CardPhoneCard extends StatelessWidget {
-  final String name;
-  final String number;
-  final Color color;
-  const CardPhoneCard({
-    super.key,
-    required this.name,
-    required this.number,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: ColorConstants.instance.cardBackgroundColor,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 12,
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 10,
-                    ),
-                    child: Container(
-                      width: 8.w,
-                      height: 40.h,
-                      decoration: BoxDecoration(
-                        color: color,
-                        borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(10),
-                          bottomRight: Radius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        name,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Text(
-                        number,
-                        style: TextStyle(color: ColorConstants.instance.textColor),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.w),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: ColorConstants.instance.grey,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
           ),
         ),
       ),

@@ -1,15 +1,16 @@
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:watlog/utils/colors.dart';
 import 'package:watlog/view/daily_chart_page.dart';
 
-class MyChart extends StatelessWidget {
-  const MyChart({
+class Chart extends StatelessWidget {
+  const Chart({
     super.key,
     required this.data,
   });
 
-  final List<MyChartData> data;
+  final List<ChartData> data;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class MyChart extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 12.0),
                   child: Row(
                     children: [
-                      for (MyChartData chartData in data)
+                      for (ChartData chartData in data)
                         Expanded(
                           child: Container(
                             decoration: BoxDecoration(),
@@ -96,7 +97,7 @@ class MyChart extends StatelessWidget {
             // decoration: BoxDecoration(color: Colors.yellow),
             child: Row(
               children: [
-                for (MyChartData chartData in data)
+                for (ChartData chartData in data)
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(

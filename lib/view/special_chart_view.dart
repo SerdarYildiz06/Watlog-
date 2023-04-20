@@ -3,9 +3,10 @@ import 'package:watlog/utils/widget/chart.dart';
 
 import '../utils/colors.dart';
 import '../utils/widget/phone_log_card.dart';
+import 'daily_chart_page.dart';
 
-class DailyChart extends StatelessWidget {
-  const DailyChart({
+class SpecialChartView extends StatelessWidget {
+  const SpecialChartView({
     super.key,
   });
 
@@ -51,41 +52,3 @@ class DailyChart extends StatelessWidget {
     );
   }
 }
-
-class ChartData {
-  final String title;
-  final int value;
-  ChartData({
-    required this.title,
-    required this.value,
-  });
-}
-
-List<ChartData> chartData = [
-  ChartData(title: '07:00', value: 0),
-  ChartData(title: '08:00', value: 0),
-  ChartData(title: '09:00', value: 0),
-  ChartData(title: '10:00', value: 0),
-  ChartData(title: '11:00', value: 0),
-  ChartData(title: '12:00', value: 0),
-  ChartData(title: '13:00', value: 0),
-  ChartData(title: '14:00', value: 1),
-  ChartData(title: '15:00', value: 0),
-  ChartData(title: '16:00', value: 0),
-  ChartData(title: '17:00', value: 0),
-  ChartData(title: '18:00', value: 0),
-  ChartData(title: '19:00', value: 0),
-  ChartData(title: '20:00', value: 0),
-  ChartData(title: '21:00', value: 1),
-  ChartData(title: '22:00', value: 0),
-];
-List<ChartData> chartData2 = [
-  ChartData(title: '06/Apr', value: 0),
-  ChartData(title: '07/Apr', value: 0),
-  ChartData(title: '08/Apr', value: 1),
-  ChartData(title: '09/Apr', value: 0),
-  ChartData(title: '10/Apr', value: 0),
-  ChartData(title: '11/Apr', value: 1),
-  ChartData(title: '12/Apr', value: 0),
-  ChartData(title: '13/Apr', value: 0),
-];
