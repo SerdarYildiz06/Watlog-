@@ -99,156 +99,161 @@ class ListScreen extends StatelessWidget {
         child: ListView.builder(
           itemCount: 3,
           itemBuilder: (context, index) {
-            return Container(
-              margin: const EdgeInsets.only(bottom: 10),
-              decoration: BoxDecoration(
-                color: ColorConstants.instance.cardBackgroundColor,
-                borderRadius: BorderRadius.circular(20.r),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 15,
+            return GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, 'compare_numbers');
+              },
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                decoration: BoxDecoration(
+                  color: ColorConstants.instance.cardBackgroundColor,
+                  borderRadius: BorderRadius.circular(20.r),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            right: 10,
-                          ),
-                          child: Container(
-                            width: 8.w,
-                            height: 60.h,
-                            decoration: BoxDecoration(
-                              color: ColorConstants.instance.red,
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(10.r),
-                                bottomRight: Radius.circular(10.r),
-                              ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 15,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 10,
                             ),
-                          ),
-                        ),
-                        SizedBox(width: 5.w),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
+                            child: Container(
+                              width: 8.w,
+                              height: 60.h,
                               decoration: BoxDecoration(
-                                color: ColorConstants.instance.bacgroundColors,
-                                shape: BoxShape.circle,
-                                border: Border.all(color: Colors.black, width: 2),
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Icon(
-                                  Icons.person_outline_outlined,
-                                  color: Colors.white,
-                                  size: 40,
+                                color: ColorConstants.instance.red,
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10.r),
+                                  bottomRight: Radius.circular(10.r),
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 15.w),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Serdar',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 5.h,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(left: 5.w),
-                                        child: Icon(
-                                          Icons.delete_outline,
-                                          color: ColorConstants.instance.red,
-                                          size: 30,
-                                        ),
-                                      ),
-                                    ],
+                          ),
+                          SizedBox(width: 5.w),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: ColorConstants.instance.bacgroundColors,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.black, width: 2),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Icon(
+                                    Icons.person_outline_outlined,
+                                    color: Colors.white,
+                                    size: 40,
                                   ),
-                                  SizedBox(
-                                    height: 5.h,
-                                  ),
-                                  Text(
-                                    '+1234567890',
-                                    style: TextStyle(
-                                      color: ColorConstants.instance.primaryColor,
-                                      fontSize: 15.sp,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10.h,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.rectangle_outlined, color: ColorConstants.instance.red),
-                                      Padding(
-                                        padding: EdgeInsets.only(left: 10.w),
-                                        child: Text(
-                                          'Offline',
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 15.w),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Serdar',
                                           style: TextStyle(
-                                            color: ColorConstants.instance.red,
-                                            fontSize: 15.sp,
+                                            color: Colors.white,
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
+                                        SizedBox(
+                                          height: 5.h,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 5.w),
+                                          child: Icon(
+                                            Icons.delete_outline,
+                                            color: ColorConstants.instance.red,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    Text(
+                                      '+1234567890',
+                                      style: TextStyle(
+                                        color: ColorConstants.instance.primaryColor,
+                                        fontSize: 15.sp,
                                       ),
-                                    ],
-                                  ),
-                                ],
+                                    ),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.rectangle_outlined, color: ColorConstants.instance.red),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10.w),
+                                          child: Text(
+                                            'Offline',
+                                            style: TextStyle(
+                                              color: ColorConstants.instance.red,
+                                              fontSize: 15.sp,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          const Icon(
-                            Icons.notifications_none,
-                            color: Colors.white,
-                            size: 30,
+                            ],
                           ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          Text(
-                            'Open',
-                            style: TextStyle(
-                              color: ColorConstants.instance.green,
-                              fontSize: 15.sp,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Text('48 second ago',
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                color: ColorConstants.instance.primaryColor,
-                                fontSize: 13.sp,
-                              )),
                         ],
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            const Icon(
+                              Icons.notifications_none,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            Text(
+                              'Open',
+                              style: TextStyle(
+                                color: ColorConstants.instance.green,
+                                fontSize: 15.sp,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Text('48 second ago',
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                  color: ColorConstants.instance.primaryColor,
+                                  fontSize: 13.sp,
+                                )),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );

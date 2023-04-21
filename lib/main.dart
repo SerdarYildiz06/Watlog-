@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:watlog/view/buy_premium_view.dart';
+import 'package:watlog/view/compare_numbers_view.dart';
 import 'package:watlog/view/detailed_statistics.dart';
 import 'package:watlog/view/help_center_view.dart';
 import 'package:watlog/view/select_person_view.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
             '/premium': (context) => const BuyPremiumView(),
             'help_center': (context) => const HelpCenterView(),
             'detailed_statistics': (context) => const DetailedStatisticsView(),
+            'compare_numbers': (context) => const CompareNumbersView(),
           },
           debugShowCheckedModeBanner: false,
           title: 'First Method',

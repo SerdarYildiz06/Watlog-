@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:watlog/utils/colors.dart';
 import 'package:watlog/utils/widget/custom_button.dart';
-
 import 'person_list.dart';
 
-class SlectPersonScreen extends StatelessWidget {
+class SlectPersonScreen extends StatefulWidget {
   const SlectPersonScreen({super.key});
 
+  @override
+  State<SlectPersonScreen> createState() => _SlectPersonScreenState();
+}
+
+class _SlectPersonScreenState extends State<SlectPersonScreen> {
+  TextEditingController _controller = TextEditingController(text: '5347244865');
+  int? _countryCode = 90;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,24 +85,89 @@ class SlectPersonScreen extends StatelessWidget {
             SizedBox(
               height: 15.h,
             ),
-            Row(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: ColorConstants.instance.iconBackgroundColor,
-                    shape: BoxShape.circle,
+            IntlPhoneField(
+              cursorColor: Colors.white,
+              autofocus: false,
+              showCursor: false,
+              flagsButtonMargin: EdgeInsets.zero,
+              flagsButtonPadding: EdgeInsets.zero,
+              controller: _controller,
+              pickerDialogStyle: PickerDialogStyle(
+                searchFieldInputDecoration: InputDecoration(
+                  icon: const Icon(
+                    Icons.search_outlined,
+                    color: Colors.white,
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Icon(
-                      Icons.phone_outlined,
-                      color: Colors.white,
-                    ),
-                  ),
+                  hintText: 'Search',
+                  hintStyle: TextStyle(color: Colors.white),
                 ),
-                SizedBox(width: 10.w),
-                const Text('5347244865', style: TextStyle(fontSize: 20)),
-              ],
+                countryNameStyle: TextStyle(
+                  color: Colors.white,
+                ),
+                countryCodeStyle: TextStyle(
+                  color: Colors.white,
+                ),
+                backgroundColor: ColorConstants.instance.bacgroundColors,
+              ),
+              readOnly: true,
+              textAlignVertical: TextAlignVertical.top,
+              textInputAction: TextInputAction.done,
+              disableLengthCheck: true,
+              dropdownDecoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              dropdownIcon: const Icon(
+                Icons.keyboard_arrow_down_rounded,
+                color: Colors.white,
+              ),
+              showDropdownIcon: true,
+              dropdownTextStyle: TextStyle(color: Colors.transparent),
+              enabled: true,
+              keyboardType: TextInputType.phone,
+              showCountryFlag: false,
+              style: TextStyle(color: Colors.white),
+              obscureText: false,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.zero,
+                  labelText: '',
+                  hintText: '',
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                  icon: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: ColorConstants.instance.iconBackgroundColor,
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(
+                            Icons.phone_outlined,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10), // add spacing between icon and text
+                      Text(
+                        '+${_countryCode}',
+                        style: TextStyle(
+                          color: ColorConstants.instance.green,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  )),
+              onChanged: (phone) {},
+              onSaved: (phone) {},
+              onCountryChanged: (country) {
+                setState(() {
+                  _countryCode = int.parse(country.dialCode);
+                });
+                print(country.dialCode);
+              },
             ),
             SizedBox(
               height: 20.h,

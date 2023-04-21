@@ -150,7 +150,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
           },
           icon: const Icon(Icons.arrow_back_outlined),
         ),
-        title: const Text('Compare Numbers View'),
+        title: const Text('Compare Numbers'),
       ),
       body: SingleChildScrollView(
         child: SizedBox(
@@ -184,6 +184,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                 ),
                 Container(
                   decoration: BoxDecoration(
+                    color: ColorConstants.instance.cardBackgroundColor,
                     border: Border(
                       bottom: BorderSide(
                         color: Theme.of(context).dividerColor,
