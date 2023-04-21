@@ -19,4 +19,5 @@ class ColorConstants {
   final Color primarContailerColor = const Color(0xFF153823);
   final Color textColor = const Color(0xFF8e8e8e);
   final Color orange = const Color(0xFFef8f36);
+  final Color chatBubleBlue = const Color(0xFFdbebfd);
 }

@@ -3,8 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:watlog/utils/colors.dart';
 import 'package:watlog/view/settings_view.dart';
 
-class ListScreen extends StatelessWidget {
+class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
+
+  @override
+  State<ListScreen> createState() => _ListScreenState();
+}
+
+class _ListScreenState extends State<ListScreen> {
+  bool _switchOnlineNotifcaiton = false;
+  bool _switchOfflineNotifcaiton = false;
+  bool _switchOnlineSound = false;
 
   @override
   Widget build(BuildContext context) {
@@ -73,13 +82,119 @@ class ListScreen extends StatelessWidget {
             )),
       ),
       appBar: AppBar(
-        // leading: IconButton(
-        //   onPressed: () {},
-        //   icon: const Icon(
-        //     Icons.sett,
-        //     size: 30,
-        //   ),
-        // ),
+        leading: IconButton(
+          onPressed: () async {
+            bool _switchValue = false;
+            showDialog<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return StatefulBuilder(
+                  builder: (BuildContext context, StateSetter setState) {
+                    return AlertDialog(
+                      backgroundColor: ColorConstants.instance.cardBackgroundColor,
+                      content: Container(
+                        width: double.infinity,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              leading: Icon(
+                                Icons.notifications_none_outlined,
+                                color: Colors.white,
+                              ),
+                              title: Text(
+                                'Online Notification',
+                                maxLines: 1,
+                              ),
+                              trailing: Transform.scale(
+                                scale: 1.5, // Set the desired scale value here
+                                child: Switch(
+                                  focusColor: Colors.red,
+                                  hoverColor: Colors.orange,
+                                  thumbColor: MaterialStateProperty.all<Color>(Colors.white),
+                                  value: _switchOnlineNotifcaiton,
+                                  onChanged: (bool value) {
+                                    setState(() {
+                                      _switchOnlineNotifcaiton = value;
+                                    });
+                                  },
+                                  activeColor: ColorConstants.instance.green,
+                                ),
+                              ),
+                            ),
+                            Divider(
+                              color: ColorConstants.instance.textColor,
+                            ),
+                            ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              leading: Icon(
+                                Icons.notifications_none_outlined,
+                                color: Colors.white,
+                              ),
+                              title: Text(
+                                'Offline Notification',
+                                maxLines: 1,
+                              ),
+                              trailing: Transform.scale(
+                                scale: 1.5, // Set the desired scale value here
+                                child: Switch(
+                                  focusColor: Colors.red,
+                                  hoverColor: Colors.orange,
+                                  thumbColor: MaterialStateProperty.all<Color>(Colors.white),
+                                  value: _switchOfflineNotifcaiton,
+                                  onChanged: (bool value) {
+                                    setState(() {
+                                      _switchOfflineNotifcaiton = value;
+                                    });
+                                  },
+                                  activeColor: ColorConstants.instance.green,
+                                ),
+                              ),
+                            ),
+                            Divider(
+                              color: ColorConstants.instance.textColor,
+                            ),
+                            ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              leading: Icon(
+                                Icons.notifications_none_outlined,
+                                color: Colors.white,
+                              ),
+                              title: Text(
+                                'Notification Sound',
+                                maxLines: 1,
+                              ),
+                              trailing: Transform.scale(
+                                scale: 1.5, // Set the desired scale value here
+                                child: Switch(
+                                  focusColor: Colors.red,
+                                  hoverColor: Colors.orange,
+                                  thumbColor: MaterialStateProperty.all<Color>(Colors.white),
+                                  value: _switchValue,
+                                  onChanged: (bool value) {
+                                    setState(() {
+                                      _switchValue = value;
+                                    });
+                                  },
+                                  activeColor: ColorConstants.instance.green,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            );
+          },
+          icon: const Icon(
+            Icons.system_security_update_warning,
+            size: 30,
+          ),
+        ),
         title: Text(
           'Watlog',
           style: TextStyle(fontSize: 25.sp),
