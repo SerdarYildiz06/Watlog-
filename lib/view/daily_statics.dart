@@ -45,7 +45,113 @@ class DailyStatics extends StatelessWidget {
           // Chart(
           //   data: chartData.sublist(0, 10),
           // ),
-          SizedBox(height: 200),
+          SizedBox(
+            height: 15,
+          ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              'Recent Activities',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Color(0xff232323),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Online Time ',
+                    style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '50 sec',
+                    style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.ads_click,
+                                color: ColorConstants.instance.green,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'Online',
+                                style: TextStyle(color: ColorConstants.instance.green, fontSize: 18),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            '21:37',
+                            style: TextStyle(color: ColorConstants.instance.green, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Offline',
+                                style: TextStyle(color: ColorConstants.instance.red, fontSize: 18),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon(
+                                Icons.ads_click,
+                                color: ColorConstants.instance.red,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            '21:37',
+                            style: TextStyle(color: ColorConstants.instance.red, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Text(
+                    '13 Apr 2023',
+                    style: TextStyle(color: ColorConstants.instance.textColor),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 200,
+          ),
         ],
       ),
     );
