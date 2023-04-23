@@ -22,7 +22,7 @@ class DailyStatics extends StatelessWidget {
               return TimeSpendCard();
             },
           ),
-
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

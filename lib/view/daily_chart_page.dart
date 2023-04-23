@@ -22,7 +22,7 @@ class DailyChart extends StatelessWidget {
               return const PhoneLogCard();
             },
           ),
-
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
