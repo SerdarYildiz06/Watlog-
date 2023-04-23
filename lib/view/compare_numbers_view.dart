@@ -132,8 +132,6 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
         );
       },
     );
-
-    ;
   }
 
   final List<LunarData> data = [
@@ -163,6 +161,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () async {

@@ -21,6 +21,7 @@ class _SlectPersonScreenState extends State<SlectPersonScreen> {
     return Scaffold(
       backgroundColor: ColorConstants.instance.bacgroundColors,
       appBar: AppBar(
+        centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [

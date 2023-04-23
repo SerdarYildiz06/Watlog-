@@ -31,6 +31,7 @@ class _DetailedStatisticsViewState extends State<DetailedStatisticsView> with Si
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leadingWidth: 100,
         actions: const [],
         leading: IconButton(

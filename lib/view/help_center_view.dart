@@ -15,6 +15,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Chat with us'),
       ),
       body: SafeArea(

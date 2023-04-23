@@ -18,65 +18,8 @@ class _ListScreenState extends State<ListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 10.w,
-        ),
-        child: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: ColorConstants.instance.iconBackgroundColor,
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: 20.h,
-                bottom: 20.h,
-                left: 20.w,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const Text(
-                        'Compare \nNumbers',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: ColorConstants.instance.grey,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(15.r),
-                          child: const Icon(
-                            Icons.arrow_forward_ios,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Image.asset(
-                    'assets/images/chat_image.png',
-                    fit: BoxFit.fitWidth,
-                    width: 125.w,
-                  )
-                ],
-              ),
-            )),
-      ),
       appBar: AppBar(
+        centerTitle: true,
         leading: IconButton(
           onPressed: () async {
             bool _switchValue = false;
@@ -371,6 +314,64 @@ class _ListScreenState extends State<ListScreen> {
             );
           },
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 10.w,
+        ),
+        child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: ColorConstants.instance.iconBackgroundColor,
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: 20.h,
+                bottom: 20.h,
+                left: 20.w,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Text(
+                        'Compare \nNumbers',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: ColorConstants.instance.grey,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(15.r),
+                          child: const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Image.asset(
+                    'assets/images/chat_image.png',
+                    fit: BoxFit.fitWidth,
+                    width: 125.w,
+                  )
+                ],
+              ),
+            )),
       ),
     );
   }
