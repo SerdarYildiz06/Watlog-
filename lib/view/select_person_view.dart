@@ -110,7 +110,6 @@ class _SlectPersonScreenState extends State<SlectPersonScreen> {
                 ),
                 backgroundColor: ColorConstants.instance.bacgroundColors,
               ),
-              readOnly: true,
               textAlignVertical: TextAlignVertical.top,
               textInputAction: TextInputAction.done,
               disableLengthCheck: true,
