@@ -75,39 +75,65 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
   DateTime _selectedDate = DateTime.now();
 
   Future<void> _showMyDialog() async {
-    return showDialog<void>(
+    return showDialog(
       context: context,
-      barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Select Date'),
-          content: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
-            child: ListView(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  child: ScrollDatePicker(
-                    selectedDate: _selectedDate,
-                    locale: Locale('en'),
-                    onDateTimeChanged: (DateTime value) {
-                      _selectedDate = value;
-                    },
-                  ),
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return AlertDialog(
+              title: Text('Select Date'),
+              content: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: Column(
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          height: 100,
+                          alignment: Alignment.center,
+                          child: Text(
+                            "$_selectedDate",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.centerRight,
+                          padding: const EdgeInsets.only(right: 48),
+                          child: TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _selectedDate = DateTime.now();
+                              });
+                            },
+                            child: Text(
+                              "TODAY",
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: ScrollDatePicker(
+                            selectedDate: _selectedDate,
+                            locale: Locale('en'),
+                            onDateTimeChanged: (DateTime value) {
+                              setState(() {
+                                _selectedDate = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                ElevatedButton(
-                  child: Text('OK'),
-                  onPressed: () {
-                    _dateController?.text = _selectedDate.toString();
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
       },
     );
+
+    ;
   }
 
   final List<LunarData> data = [
@@ -128,6 +154,8 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
 
   @override
   void dispose() {
+    _tabController!.dispose();
+
     super.dispose();
   }
 
@@ -138,7 +166,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
         actions: [
           IconButton(
             onPressed: () async {
-              await _showMyDialog();
+              //  await _showMyDialog();
               //here
             },
             icon: const Icon(Icons.calendar_month),

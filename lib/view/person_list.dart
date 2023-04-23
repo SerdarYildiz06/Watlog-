@@ -52,21 +52,16 @@ class _ListScreenState extends State<ListScreen> {
                       SizedBox(
                         width: 20.w,
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingView()));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: ColorConstants.instance.grey,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(15.r),
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.white,
-                            ),
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: ColorConstants.instance.grey,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(15.r),
+                          child: const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -201,9 +196,11 @@ class _ListScreenState extends State<ListScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingView()));
+            },
             icon: const Icon(
-              Icons.add_outlined,
+              Icons.settings,
               size: 30,
             ),
           ),

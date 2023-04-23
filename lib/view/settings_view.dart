@@ -24,6 +24,7 @@ class SettingView extends StatelessWidget {
           child: Column(
             children: [
               ListTile(
+                dense: true,
                 onTap: () {},
                 title: Text(
                   'Settings',
