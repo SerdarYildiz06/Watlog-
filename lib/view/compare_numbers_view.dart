@@ -236,6 +236,9 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 15,
+                ),
                 Expanded(
                   child: TabBarView(
                     controller: _tabController,

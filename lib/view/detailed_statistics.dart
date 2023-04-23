@@ -211,6 +211,9 @@ class _DetailedStatisticsViewState extends State<DetailedStatisticsView> with Si
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 15,
+                ),
                 Expanded(
                   child: TabBarView(
                     controller: _tabController,
