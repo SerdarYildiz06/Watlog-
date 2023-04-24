@@ -27,7 +27,7 @@ class SpecialStatics extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 '  13 April',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
@@ -46,7 +46,7 @@ class SpecialStatics extends StatelessWidget {
           // Chart(
           //   data: chartData.sublist(0, 10),
           // ),
-          SizedBox(height: 200),
+          const SizedBox(height: 200),
         ],
       ),
     );

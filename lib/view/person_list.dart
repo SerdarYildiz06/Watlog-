@@ -13,7 +13,7 @@ class ListScreen extends StatefulWidget {
 class _ListScreenState extends State<ListScreen> {
   bool _switchOnlineNotifcaiton = false;
   bool _switchOfflineNotifcaiton = false;
-  bool _switchOnlineSound = false;
+  final bool _switchOnlineSound = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class _ListScreenState extends State<ListScreen> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () async {
-            bool _switchValue = false;
+            bool switchValue = false;
             showDialog<void>(
               context: context,
               builder: (BuildContext context) {
@@ -30,18 +30,18 @@ class _ListScreenState extends State<ListScreen> {
                   builder: (BuildContext context, StateSetter setState) {
                     return AlertDialog(
                       backgroundColor: ColorConstants.instance.cardBackgroundColor,
-                      content: Container(
+                      content: SizedBox(
                         width: double.infinity,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             ListTile(
                               contentPadding: EdgeInsets.zero,
-                              leading: Icon(
+                              leading: const Icon(
                                 Icons.notifications_none_outlined,
                                 color: Colors.white,
                               ),
-                              title: Text(
+                              title: const Text(
                                 'Online Notification',
                                 maxLines: 1,
                               ),
@@ -66,11 +66,11 @@ class _ListScreenState extends State<ListScreen> {
                             ),
                             ListTile(
                               contentPadding: EdgeInsets.zero,
-                              leading: Icon(
+                              leading: const Icon(
                                 Icons.notifications_none_outlined,
                                 color: Colors.white,
                               ),
-                              title: Text(
+                              title: const Text(
                                 'Offline Notification',
                                 maxLines: 1,
                               ),
@@ -95,11 +95,11 @@ class _ListScreenState extends State<ListScreen> {
                             ),
                             ListTile(
                               contentPadding: EdgeInsets.zero,
-                              leading: Icon(
+                              leading: const Icon(
                                 Icons.notifications_none_outlined,
                                 color: Colors.white,
                               ),
-                              title: Text(
+                              title: const Text(
                                 'Notification Sound',
                                 maxLines: 1,
                               ),
@@ -109,10 +109,10 @@ class _ListScreenState extends State<ListScreen> {
                                   focusColor: Colors.red,
                                   hoverColor: Colors.orange,
                                   thumbColor: MaterialStateProperty.all<Color>(Colors.white),
-                                  value: _switchValue,
+                                  value: switchValue,
                                   onChanged: (bool value) {
                                     setState(() {
-                                      _switchValue = value;
+                                      switchValue = value;
                                     });
                                   },
                                   activeColor: ColorConstants.instance.green,

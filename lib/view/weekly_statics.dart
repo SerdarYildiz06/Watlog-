@@ -20,14 +20,14 @@ class WeeklyStatics extends StatelessWidget {
             shrinkWrap: true,
             itemCount: 3,
             itemBuilder: (context, index) {
-              return TimeSpendCard();
+              return const TimeSpendCard();
             },
           ),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 '  06 April - 13 April',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
@@ -37,20 +37,21 @@ class WeeklyStatics extends StatelessWidget {
           const SizedBox(height: 20),
           Chart(
             data: chartData2,
+            circular: false,
           ),
-          SizedBox(height: 20),
           Chart(
             data: chartData2,
+            circular: false,
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Color(0xff232323),
+              color: const Color(0xff232323),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -62,7 +63,7 @@ class WeeklyStatics extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 200),
+          const SizedBox(height: 200),
         ],
       ),
     );

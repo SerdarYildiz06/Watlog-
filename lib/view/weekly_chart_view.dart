@@ -27,30 +27,34 @@ class WeeklyChart extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 '  06 April - 13 April',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
               Text('Last Week', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: ColorConstants.instance.orange)),
             ],
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          Chart(
+            data: chartData2,
+            circular: false,
+          ),
+          //   SizedBox(height: 20),
+          Chart(
+            circular: false,
+            data: chartData2,
+          ),
           const SizedBox(height: 20),
-          Chart(
-            data: chartData2,
-          ),
-          SizedBox(height: 20),
-          Chart(
-            data: chartData2,
-          ),
-          SizedBox(height: 20),
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Color(0xff232323),
+              color: const Color(0xff232323),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -62,7 +66,7 @@ class WeeklyChart extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 200),
+          const SizedBox(height: 200),
         ],
       ),
     );

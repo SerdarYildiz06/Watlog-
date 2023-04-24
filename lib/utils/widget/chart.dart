@@ -1,4 +1,3 @@
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:watlog/utils/colors.dart';
@@ -8,16 +7,18 @@ class Chart extends StatelessWidget {
   const Chart({
     super.key,
     required this.data,
+    this.circular = true,
   });
 
   final List<ChartData> data;
+  final bool circular;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      padding: EdgeInsets.all(4).add(EdgeInsets.only(top: 10)).subtract(EdgeInsets.only(bottom: 4)),
-      decoration: BoxDecoration(color: Color(0xff232323), borderRadius: BorderRadius.circular(16)),
+      padding: const EdgeInsets.all(4).add(const EdgeInsets.only(top: 10)).subtract(const EdgeInsets.only(bottom: 4)),
+      decoration: BoxDecoration(color: const Color(0xff232323), borderRadius: circular ? BorderRadius.circular(16) : BorderRadius.circular(0)),
       child: Column(
         children: [
           Expanded(
@@ -26,16 +27,16 @@ class Chart extends StatelessWidget {
                 GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 25,
                     childAspectRatio: 0.8,
                   ),
                   itemBuilder: (context, index) {
                     return DottedBorder(
                       strokeWidth: 0.8,
-                      dashPattern: [2, 2],
+                      dashPattern: const [2, 2],
                       strokeCap: StrokeCap.round,
-                      color: Color(0xff383838),
+                      color: const Color(0xff383838),
                       child: Container(),
                     );
                   },
@@ -47,7 +48,7 @@ class Chart extends StatelessWidget {
                       for (ChartData chartData in data)
                         Expanded(
                           child: Container(
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Align(
                               alignment: Alignment.bottomCenter,
                               child: RotatedBox(
@@ -56,7 +57,7 @@ class Chart extends StatelessWidget {
                                   if (chartData.value == 0) {
                                     return Text(
                                       chartData.value.toString(),
-                                      style: TextStyle(color: Colors.white, fontSize: 10),
+                                      style: const TextStyle(color: Colors.white, fontSize: 10),
                                       textAlign: TextAlign.end,
                                     );
                                   } else {
@@ -71,8 +72,8 @@ class Chart extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(width: 10),
-                                        RotatedBox(
+                                        const SizedBox(width: 10),
+                                        const RotatedBox(
                                           quarterTurns: 1,
                                           child: Text('1', style: TextStyle(color: Colors.white, fontSize: 10), textAlign: TextAlign.end),
                                         ),
@@ -90,9 +91,9 @@ class Chart extends StatelessWidget {
               ],
             ),
           ),
-          Divider(color: Color(0xff383838), thickness: 2, height: 0),
-          SizedBox(height: 8),
-          Container(
+          const Divider(color: Color(0xff383838), thickness: 2, height: 0),
+          const SizedBox(height: 8),
+          SizedBox(
             height: 60,
             // decoration: BoxDecoration(color: Colors.yellow),
             child: Row(
@@ -100,7 +101,7 @@ class Chart extends StatelessWidget {
                 for (ChartData chartData in data)
                   Expanded(
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           // color: data.indexOf(chartData) % 2 == 0 ? Colors.red : Colors.blue,
                           ),
                       child: Align(
@@ -109,7 +110,7 @@ class Chart extends StatelessWidget {
                           quarterTurns: 3,
                           child: Text(
                             chartData.title,
-                            style: TextStyle(color: Colors.white, fontSize: 10),
+                            style: const TextStyle(color: Colors.white, fontSize: 10),
                             textAlign: TextAlign.end,
                           ),
                         ),

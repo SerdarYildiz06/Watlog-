@@ -16,7 +16,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Chat with us'),
+        title: const Text('Chat with us'),
       ),
       body: SafeArea(
         child: Column(
@@ -26,9 +26,9 @@ class _HelpCenterViewState extends State<HelpCenterView> {
                 children: [
                   Container(
                     width: double.infinity,
-                    margin: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 0, right: 0),
-                    padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                    decoration: BoxDecoration(
+                    margin: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 0, right: 0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    decoration: const BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(16.0),
@@ -39,26 +39,26 @@ class _HelpCenterViewState extends State<HelpCenterView> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircleAvatar(),
-                        SizedBox(
+                        const CircleAvatar(),
+                        const SizedBox(
                           width: 5,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Support',
                               style: TextStyle(fontSize: 12),
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width / 1.3,
-                              margin: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 0, right: 0),
-                              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                              margin: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 0, right: 0),
+                              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                               decoration: BoxDecoration(
                                 color: ColorConstants.instance.chatBubleBlue,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Text(
+                              child: const Text(
                                 'Hello there, how can we help you? Hello the jsadklasjasdlka',
                                 style: TextStyle(color: Colors.black),
                               ),
@@ -69,8 +69,8 @@ class _HelpCenterViewState extends State<HelpCenterView> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 48.0, right: 8.0),
-                    padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    margin: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 48.0, right: 8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     decoration: BoxDecoration(
                       color: ColorConstants.instance.chatBubleBlue,
                       borderRadius: BorderRadius.circular(10),
@@ -79,15 +79,15 @@ class _HelpCenterViewState extends State<HelpCenterView> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.end, // align to bottom of container
                       children: [
-                        Text(
+                        const Text(
                           'Hello thsere, how can we help you? Hello ',
                           style: TextStyle(color: Colors.black),
                         ),
-                        SizedBox(height: 4.0), // add some spacing between text and icon
+                        const SizedBox(height: 4.0), // add some spacing between text and icon
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
+                          children: const [
                             Text(
                               '09.15 PM',
                               style: TextStyle(fontSize: 12, color: Colors.black),
@@ -107,8 +107,8 @@ class _HelpCenterViewState extends State<HelpCenterView> {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 border: Border(
                   top: BorderSide(
@@ -136,7 +136,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 8.0),
+                  const SizedBox(width: 8.0),
                   IconButton(
                     onPressed: () {
                       String message = _messageController.text;

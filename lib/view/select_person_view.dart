@@ -14,7 +14,7 @@ class SlectPersonScreen extends StatefulWidget {
 }
 
 class _SlectPersonScreenState extends State<SlectPersonScreen> {
-  TextEditingController _controller = TextEditingController(text: '5347244865');
+  final TextEditingController _controller = TextEditingController(text: '5347244865');
   int? _countryCode = 90;
   @override
   Widget build(BuildContext context) {
@@ -94,18 +94,18 @@ class _SlectPersonScreenState extends State<SlectPersonScreen> {
               flagsButtonPadding: EdgeInsets.zero,
               controller: _controller,
               pickerDialogStyle: PickerDialogStyle(
-                searchFieldInputDecoration: InputDecoration(
-                  icon: const Icon(
+                searchFieldInputDecoration: const InputDecoration(
+                  icon: Icon(
                     Icons.search_outlined,
                     color: Colors.white,
                   ),
                   hintText: 'Search',
                   hintStyle: TextStyle(color: Colors.white),
                 ),
-                countryNameStyle: TextStyle(
+                countryNameStyle: const TextStyle(
                   color: Colors.white,
                 ),
-                countryCodeStyle: TextStyle(
+                countryCodeStyle: const TextStyle(
                   color: Colors.white,
                 ),
                 backgroundColor: ColorConstants.instance.bacgroundColors,
@@ -121,11 +121,11 @@ class _SlectPersonScreenState extends State<SlectPersonScreen> {
                 color: Colors.white,
               ),
               showDropdownIcon: true,
-              dropdownTextStyle: TextStyle(color: Colors.transparent),
+              dropdownTextStyle: const TextStyle(color: Colors.transparent),
               enabled: true,
               keyboardType: TextInputType.phone,
               showCountryFlag: false,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
               obscureText: false,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.zero,
@@ -152,7 +152,7 @@ class _SlectPersonScreenState extends State<SlectPersonScreen> {
                       ),
                       const SizedBox(width: 10), // add spacing between icon and text
                       Text(
-                        '+${_countryCode}',
+                        '+$_countryCode',
                         style: TextStyle(
                           color: ColorConstants.instance.green,
                           fontWeight: FontWeight.bold,
@@ -166,7 +166,6 @@ class _SlectPersonScreenState extends State<SlectPersonScreen> {
                 setState(() {
                   _countryCode = int.parse(country.dialCode);
                 });
-                print(country.dialCode);
               },
             ),
             SizedBox(

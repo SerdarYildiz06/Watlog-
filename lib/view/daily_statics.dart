@@ -19,14 +19,14 @@ class DailyStatics extends StatelessWidget {
             shrinkWrap: true,
             itemCount: 3,
             itemBuilder: (context, index) {
-              return TimeSpendCard();
+              return const TimeSpendCard();
             },
           ),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 '  13 April',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
@@ -45,40 +45,40 @@ class DailyStatics extends StatelessWidget {
           // Chart(
           //   data: chartData.sublist(0, 10),
           // ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
-          Align(
+          const Align(
             alignment: Alignment.topLeft,
             child: Text(
               'Recent Activities',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Color(0xff232323),
+              color: const Color(0xff232323),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Online Time ',
                     style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  Text(
+                  const Text(
                     '50 sec',
                     style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                   ),
@@ -94,7 +94,7 @@ class DailyStatics extends StatelessWidget {
                                 Icons.ads_click,
                                 color: ColorConstants.instance.green,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
                               Text(
@@ -103,7 +103,7 @@ class DailyStatics extends StatelessWidget {
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
@@ -121,7 +121,7 @@ class DailyStatics extends StatelessWidget {
                                 'Offline',
                                 style: TextStyle(color: ColorConstants.instance.red, fontSize: 18),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
                               Icon(
@@ -130,7 +130,7 @@ class DailyStatics extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
@@ -149,7 +149,7 @@ class DailyStatics extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 200,
           ),
         ],
@@ -166,7 +166,7 @@ class TimeSpendCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 10),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -174,26 +174,26 @@ class TimeSpendCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 15,
           ),
           child: Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Icon(
                 Icons.ads_click,
                 color: ColorConstants.instance.green,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
-              Text(
+              const Text(
                 '50 sec',
                 style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Text(

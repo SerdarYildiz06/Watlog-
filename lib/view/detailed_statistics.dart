@@ -181,7 +181,7 @@ class _DetailedStatisticsViewState extends State<DetailedStatisticsView> with Si
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -211,13 +211,13 @@ class _DetailedStatisticsViewState extends State<DetailedStatisticsView> with Si
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Expanded(
                   child: TabBarView(
                     controller: _tabController,
-                    children: [
+                    children: const [
                       DailyStatics(),
                       WeeklyStatics(),
                       SpecialStatics(),

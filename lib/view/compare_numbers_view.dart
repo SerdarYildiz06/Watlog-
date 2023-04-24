@@ -81,7 +81,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
             return AlertDialog(
-              title: Text('Select Date'),
+              title: const Text('Select Date'),
               content: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.5,
                 child: Column(
@@ -93,7 +93,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                           alignment: Alignment.center,
                           child: Text(
                             "$_selectedDate",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                           ),
                         ),
                         Container(
@@ -105,7 +105,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                                 _selectedDate = DateTime.now();
                               });
                             },
-                            child: Text(
+                            child: const Text(
                               "TODAY",
                               style: TextStyle(color: Colors.red),
                             ),
@@ -114,7 +114,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                         Expanded(
                           child: ScrollDatePicker(
                             selectedDate: _selectedDate,
-                            locale: Locale('en'),
+                            locale: const Locale('en'),
                             onDateTimeChanged: (DateTime value) {
                               setState(() {
                                 _selectedDate = value;
@@ -236,13 +236,13 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Expanded(
                   child: TabBarView(
                     controller: _tabController,
-                    children: [
+                    children: const [
                       DailyChart(),
                       WeeklyChart(),
                       SpecialChartView(),
