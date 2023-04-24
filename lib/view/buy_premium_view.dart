@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:watlog/utils/widget/custom_button.dart';
-
 import '../utils/colors.dart';
 import 'compare_numbers_view.dart';
 
@@ -16,7 +15,9 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
   final PageController _controller = PageController();
   int _pageIndicator = 0;
   int _selected = 0;
-  int selectedPackage = 0;
+  bool containerWeekly = false;
+  bool containerMonthly = false;
+  bool container3Months = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,9 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               Column(
                 children: [
                   SizedBox(
@@ -107,43 +111,67 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                     height: 25,
                   ),
                   slectNumber(),
-                  SizedBox(
-                    height: 10.h,
+                  const SizedBox(
+                    height: 25,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(
-                            color: selectedPackage == 0 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
-                            width: 2,
-                          ),
-                        ),
+                      Expanded(
                         child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              selectedPackage = 0;
+                              containerWeekly = true;
+                              containerMonthly = false;
+                              container3Months = false;
                             });
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Weekly",
-                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(
-                                  height: 5.h,
-                                ),
-                                Text(
-                                  "59.99\$",
-                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                ),
-                              ],
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                color: containerWeekly ? ColorConstants.instance.green : ColorConstants.instance.darGreen,
+                                width: 2,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 24),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  const Text(
+                                    "Weekly",
+                                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                  RichText(
+                                    text: const TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: '₺239.96',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                            decoration: TextDecoration.lineThrough,
+                                            decorationColor: Colors.red,
+                                            decorationThickness: 2.0,
+                                            decorationStyle: TextDecorationStyle.solid,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const Text(
+                                    "",
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -151,75 +179,151 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                       SizedBox(
                         width: 12.w,
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(
-                            color: selectedPackage == 2 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
-                            width: 2,
-                          ),
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedPackage = 2;
-                            });
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Weekly",
-                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                      Expanded(
+                        child: Stack(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 5.h),
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    containerMonthly = true;
+                                    containerWeekly = false;
+                                    container3Months = false;
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    border: Border.all(
+                                      color: containerMonthly ? ColorConstants.instance.green : ColorConstants.instance.darGreen,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 24),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          "Monthly",
+                                          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          height: 5.h,
+                                        ),
+                                        RichText(
+                                          text: const TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: '₺239.96',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 17,
+                                                  decoration: TextDecoration.lineThrough,
+                                                  decorationColor: Colors.red,
+                                                  decorationThickness: 2.0,
+                                                  decorationStyle: TextDecorationStyle.solid,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        const Text(
+                                          "₺119.98",
+                                          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
-                                SizedBox(
-                                  height: 5.h,
-                                ),
-                                Text(
-                                  "59.99\$",
-                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
+                            Container(
+                              // width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: Colors.red.shade200, // set the border color to light red
+                                  width: 4, // set the border width to 2
+                                ),
+                              ),
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                child: Center(
+                                  child: Text(
+                                    'Suggested',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(
                         width: 12.w,
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(
-                            color: selectedPackage == 2 ? ColorConstants.instance.darkGreen : ColorConstants.instance.primarContailerColor,
-                            width: 2,
-                          ),
-                        ),
+                      Expanded(
                         child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              selectedPackage = 2;
+                              containerWeekly = false;
+                              containerMonthly = false;
+                              container3Months = true;
                             });
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Weekly",
-                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(
-                                  height: 5.h,
-                                ),
-                                Text(
-                                  "59.99\$",
-                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                                ),
-                              ],
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                color: container3Months ? ColorConstants.instance.green : ColorConstants.instance.darGreen,
+                                width: 2,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 24),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    "Monthly",
+                                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
+                                  RichText(
+                                    text: const TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: '₺239.96',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 17,
+                                            decoration: TextDecoration.lineThrough,
+                                            decorationColor: Colors.red,
+                                            decorationThickness: 2.0,
+                                            decorationStyle: TextDecorationStyle.solid,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  const Text(
+                                    "₺119.98",
+                                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -227,7 +331,7 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                     ],
                   ),
                   const SizedBox(
-                    height: 100,
+                    height: 50,
                   ),
                   CustomButton(
                     text: 'CONTINUE',
@@ -236,6 +340,9 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                     },
                   ),
                 ],
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
