@@ -1,8 +1,8 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:scroll_date_picker/scroll_date_picker.dart';
 import 'package:watlog/view/special_chart_view.dart';
 import 'package:watlog/view/weekly_chart_view.dart';
 
@@ -72,63 +72,54 @@ final List<DateTimeRange> bigDataList = getRandomSampleDataList();
 class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTickerProviderStateMixin {
   TabController? _tabController;
   TextEditingController? _dateController;
-  DateTime _selectedDate = DateTime.now();
+  final CupertinoDatePickerMode _datePickerMode = CupertinoDatePickerMode.dateAndTime;
+  final DateTime _selectedDate = DateTime.now();
 
-  Future<void> _showMyDialog() async {
-    return showDialog(
+  void _showMyDialog() {
+    showDialog(
       context: context,
       builder: (BuildContext context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return AlertDialog(
-              title: const Text('Select Date'),
-              content: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.5,
-                child: Column(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          height: 100,
-                          alignment: Alignment.center,
-                          child: Text(
-                            "$_selectedDate",
-                            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+        return AlertDialog(
+          backgroundColor: const Color(0xff232323),
+          title: const Text(
+            'Select Date',
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          content: SizedBox(
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.2,
+            child: Column(
+              children: [
+                Expanded(
+                  child: Theme(
+                    data: ThemeData(
+                      cupertinoOverrideTheme: const CupertinoThemeData(
+                        textTheme: CupertinoTextThemeData(
+                          dateTimePickerTextStyle: TextStyle(
+                            color: Colors.white,
                           ),
                         ),
-                        Container(
-                          alignment: Alignment.centerRight,
-                          padding: const EdgeInsets.only(right: 48),
-                          child: TextButton(
-                            onPressed: () {
-                              setState(() {
-                                _selectedDate = DateTime.now();
-                              });
-                            },
-                            child: const Text(
-                              "TODAY",
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: ScrollDatePicker(
-                            selectedDate: _selectedDate,
-                            locale: const Locale('en'),
-                            onDateTimeChanged: (DateTime value) {
-                              setState(() {
-                                _selectedDate = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ],
+                    child: CupertinoDatePicker(
+                      initialDateTime: _selectedDate,
+                      onDateTimeChanged: (dateTime) {},
+                    ),
+                  ),
                 ),
-              ),
-            );
-          },
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    // Do something with the selected date
+                    print('Selected date: $_selectedDate');
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          ),
+          contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
         );
       },
     );
@@ -165,8 +156,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
         actions: [
           IconButton(
             onPressed: () async {
-              //  await _showMyDialog();
-              //here
+              _showMyDialog();
             },
             icon: const Icon(Icons.calendar_month),
           ),
