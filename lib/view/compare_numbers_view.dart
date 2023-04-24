@@ -215,7 +215,7 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
               // const SizedBox(
               //   height: 20,
               // ),
-              const Text('Selected Date', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+              const Text('Selected Date', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(
                 height: 10,
               ),
