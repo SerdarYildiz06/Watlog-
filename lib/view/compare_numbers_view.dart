@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:watlog/utils/widget/custom_button.dart';
 import 'package:watlog/view/special_chart_view.dart';
 import 'package:watlog/view/weekly_chart_view.dart';
 
@@ -75,20 +76,161 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
   final CupertinoDatePickerMode _datePickerMode = CupertinoDatePickerMode.dateAndTime;
   final DateTime _selectedDate = DateTime.now();
 
+  // void _showMyDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         backgroundColor: const Color(0xff232323),
+  //         title: const Text(
+  //           'Select Date',
+  //           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+  //         ),
+  //         content: SizedBox(
+  //           width: double.infinity,
+  //           height: MediaQuery.of(context).size.height * 0.2,
+  //           child: Column(
+  //             children: [
+  //               Expanded(
+  //                 child: Theme(
+  //                   data: ThemeData(
+  //                     cupertinoOverrideTheme: const CupertinoThemeData(
+  //                       textTheme: CupertinoTextThemeData(
+  //                         dateTimePickerTextStyle: TextStyle(
+  //                           color: Colors.white,
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   child: CupertinoDatePicker(
+  //                     initialDateTime: _selectedDate,
+  //                     onDateTimeChanged: (dateTime) {},
+  //                   ),
+  //                 ),
+  //               ),
+  //               const SizedBox(height: 16),
+  //               ElevatedButton(
+  //                 onPressed: () {
+  //                   // Do something with the selected date
+  //                   print('Selected date: $_selectedDate');
+  //                   Navigator.of(context).pop();
+  //                 },
+  //                 child: const Text('OK'),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //         contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
+  //       );
+  //     },
+  //   );
+  // }
+  // void _showMyDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         backgroundColor: const Color(0xff232323),
+  //         contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+  //         title: Row(
+  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //           children: [
+  //             const Text(
+  //               'Selected Date',
+  //               textAlign: TextAlign.center,
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 color: Colors.white,
+  //                 fontSize: 18,
+  //               ),
+  //             ),
+  //             IconButton(
+  //               icon: const Icon(
+  //                 Icons.close,
+  //                 color: Colors.white,
+  //               ),
+  //               onPressed: () {
+  //                 Navigator.of(context).pop();
+  //               },
+  //             ),
+  //           ],
+  //         ),
+  //         actions: const [],
+  //         content: SizedBox(
+  //           width: MediaQuery.of(context).size.width,
+  //           height: MediaQuery.of(context).size.height * 0.2,
+  //           child: Column(
+  //             children: [
+  //               const SizedBox(
+  //                 height: 20,
+  //               ),
+  //               Expanded(
+  //                 child: Theme(
+  //                   data: ThemeData(
+  //                     cupertinoOverrideTheme: const CupertinoThemeData(
+  //                       textTheme: CupertinoTextThemeData(
+  //                         dateTimePickerTextStyle: TextStyle(
+  //                           color: Colors.white,
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   child: CupertinoDatePicker(
+  //                     use24hFormat: true,
+  //                     initialDateTime: _selectedDate,
+  //                     onDateTimeChanged: (dateTime) {},
+  //                   ),
+  //                 ),
+  //               ),
+  //               const SizedBox(height: 16),
+  //               CustomButton(text: "Selected", onPressed: () {})
+  //             ],
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
   void _showMyDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: const Color(0xff232323),
-          title: const Text(
-            'Select Date',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          title: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: const Icon(
+                    Icons.close,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+              const Text('Selected Date', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Select the date you want \to see statistics',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: ColorConstants.instance.textColor, fontSize: 15),
+              ),
+            ],
           ),
           content: SizedBox(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.2,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.3,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(
                   child: Theme(
@@ -102,24 +244,21 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                       ),
                     ),
                     child: CupertinoDatePicker(
+                      use24hFormat: true,
                       initialDateTime: _selectedDate,
                       onDateTimeChanged: (dateTime) {},
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    // Do something with the selected date
-                    print('Selected date: $_selectedDate');
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('OK'),
-                ),
+                const SizedBox(height: 15),
+                CustomButton(text: "Selected", onPressed: () {}),
+                // const SizedBox(
+                //   height: 20,
+                //   child: SizedBox.shrink(),
+                // )
               ],
             ),
           ),
-          contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
         );
       },
     );
