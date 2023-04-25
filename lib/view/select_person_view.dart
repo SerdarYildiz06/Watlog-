@@ -4,16 +4,15 @@ import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:watlog/utils/colors.dart';
 import 'package:watlog/utils/widget/custom_button.dart';
-import 'person_list.dart';
 
-class SlectPersonScreen extends StatefulWidget {
-  const SlectPersonScreen({super.key});
+class SelectPersonScreen extends StatefulWidget {
+  const SelectPersonScreen({super.key});
 
   @override
-  State<SlectPersonScreen> createState() => _SlectPersonScreenState();
+  State<SelectPersonScreen> createState() => _SelectPersonScreenState();
 }
 
-class _SlectPersonScreenState extends State<SlectPersonScreen> {
+class _SelectPersonScreenState extends State<SelectPersonScreen> {
   final TextEditingController _controller = TextEditingController(text: '5347244865');
   int? _countryCode = 90;
   @override
@@ -150,7 +149,7 @@ class _SlectPersonScreenState extends State<SlectPersonScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 10), // add spacing between icon and text
+                      const SizedBox(width: 10),
                       Text(
                         '+$_countryCode',
                         style: TextStyle(
@@ -174,7 +173,7 @@ class _SlectPersonScreenState extends State<SlectPersonScreen> {
             CustomButton(
               text: 'CONTINUE',
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ListScreen()));
+                Navigator.pushNamed(context, "person");
               },
             ),
             SizedBox(

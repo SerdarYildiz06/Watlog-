@@ -14,7 +14,7 @@ class PhoneLogCard extends StatelessWidget {
       padding: EdgeInsets.only(top: 5.h),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, 'detailed_statistics');
+          Navigator.pushNamed(context, 'detailed-statistics');
         },
         child: Container(
           decoration: BoxDecoration(

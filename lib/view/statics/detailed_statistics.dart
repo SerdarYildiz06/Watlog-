@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:watlog/view/daily_statics.dart';
-import 'package:watlog/view/special_statics.dart';
-import 'package:watlog/view/weekly_statics.dart';
+import 'package:watlog/view/statics/daily_statics.dart';
+import 'package:watlog/view/statics/special_statics.dart';
+import 'package:watlog/view/statics/weekly_statics.dart';
 
-import '../utils/colors.dart';
+import '../../utils/colors.dart';
 
 class DetailedStatisticsView extends StatefulWidget {
   const DetailedStatisticsView({super.key});

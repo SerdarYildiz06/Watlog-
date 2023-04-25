@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../colors.dart';
+import 'package:watlog/utils/colors.dart';
 
 class CardPhoneCard extends StatelessWidget {
   final String name;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:watlog/utils/widget/chart.dart';
 
-import '../utils/colors.dart';
-import '../utils/widget/phone_log_card.dart';
+import '../../utils/colors.dart';
+import '../../utils/widget/phone_log_card.dart';
 
 class DailyChart extends StatelessWidget {
   const DailyChart({

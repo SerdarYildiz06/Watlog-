@@ -1,7 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:watlog/utils/colors.dart';
-import 'package:watlog/view/daily_chart_page.dart';
+import 'package:watlog/view/chart/daily_chart_view.dart';
 
 class Chart extends StatelessWidget {
   const Chart({
@@ -11,14 +11,15 @@ class Chart extends StatelessWidget {
   });
 
   final List<ChartData> data;
-  final bool circular;
+  final bool circular; // if true, chart will be circular in weekly between two chart
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
       padding: const EdgeInsets.all(4).add(const EdgeInsets.only(top: 10)).subtract(const EdgeInsets.only(bottom: 4)),
-      decoration: BoxDecoration(color: const Color(0xff232323), borderRadius: circular ? BorderRadius.circular(16) : BorderRadius.circular(0)),
+      decoration:
+          BoxDecoration(color: ColorConstants.instance.cardBackgroundColor, borderRadius: circular ? BorderRadius.circular(16) : BorderRadius.circular(0)),
       child: Column(
         children: [
           Expanded(
@@ -36,7 +37,7 @@ class Chart extends StatelessWidget {
                       strokeWidth: 0.8,
                       dashPattern: const [2, 2],
                       strokeCap: StrokeCap.round,
-                      color: const Color(0xff383838),
+                      color: ColorConstants.instance.divederColor,
                       child: Container(),
                     );
                   },
@@ -91,19 +92,16 @@ class Chart extends StatelessWidget {
               ],
             ),
           ),
-          const Divider(color: Color(0xff383838), thickness: 2, height: 0),
+          Divider(color: ColorConstants.instance.divederColor, thickness: 2, height: 0),
           const SizedBox(height: 8),
           SizedBox(
             height: 60,
-            // decoration: BoxDecoration(color: Colors.yellow),
             child: Row(
               children: [
                 for (ChartData chartData in data)
                   Expanded(
                     child: Container(
-                      decoration: const BoxDecoration(
-                          // color: data.indexOf(chartData) % 2 == 0 ? Colors.red : Colors.blue,
-                          ),
+                      decoration: const BoxDecoration(),
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: RotatedBox(

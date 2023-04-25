@@ -3,17 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:watlog/utils/colors.dart';
 import 'package:watlog/view/settings_view.dart';
 
-class ListScreen extends StatefulWidget {
-  const ListScreen({super.key});
+class PersonsView extends StatefulWidget {
+  const PersonsView({super.key});
 
   @override
-  State<ListScreen> createState() => _ListScreenState();
+  State<PersonsView> createState() => _PersonsViewState();
 }
 
-class _ListScreenState extends State<ListScreen> {
+class _PersonsViewState extends State<PersonsView> {
   bool _switchOnlineNotifcaiton = false;
   bool _switchOfflineNotifcaiton = false;
-  final bool _switchOnlineSound = false;
+  bool _switchOnlineSound = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,6 @@ class _ListScreenState extends State<ListScreen> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () async {
-            bool switchValue = false;
             showDialog<void>(
               context: context,
               builder: (BuildContext context) {
@@ -109,10 +108,10 @@ class _ListScreenState extends State<ListScreen> {
                                   focusColor: Colors.red,
                                   hoverColor: Colors.orange,
                                   thumbColor: MaterialStateProperty.all<Color>(Colors.white),
-                                  value: switchValue,
+                                  value: _switchOnlineSound,
                                   onChanged: (bool value) {
                                     setState(() {
-                                      switchValue = value;
+                                      _switchOnlineSound = value;
                                     });
                                   },
                                   activeColor: ColorConstants.instance.green,
@@ -156,7 +155,7 @@ class _ListScreenState extends State<ListScreen> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'compare_numbers');
+                Navigator.pushNamed(context, 'compare-numbers');
               },
               child: Container(
                 margin: const EdgeInsets.only(bottom: 10),

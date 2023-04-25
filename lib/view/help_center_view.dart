@@ -83,7 +83,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
                           'Hello thsere, how can we help you? Hello ',
                           style: TextStyle(color: Colors.black),
                         ),
-                        const SizedBox(height: 4.0), // add some spacing between text and icon
+                        const SizedBox(height: 4.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -92,7 +92,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
                               '09.15 PM',
                               style: TextStyle(fontSize: 12, color: Colors.black),
                             ),
-                            SizedBox(width: 4.0), // add some spacing between time and icon
+                            SizedBox(width: 4.0),
                             Icon(
                               Icons.check,
                               color: Colors.grey,
@@ -119,20 +119,18 @@ class _HelpCenterViewState extends State<HelpCenterView> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      child: TextFormField(
-                        controller: _messageController,
-                        decoration: InputDecoration(
-                          prefixIcon: Transform.rotate(
-                            angle: 3.14 / 4,
-                            child: Icon(
-                              Icons.attach_file_sharp,
-                              color: ColorConstants.instance.blue,
-                            ),
+                    child: TextFormField(
+                      controller: _messageController,
+                      decoration: InputDecoration(
+                        prefixIcon: Transform.rotate(
+                          angle: 3.14 / 4,
+                          child: Icon(
+                            Icons.attach_file_sharp,
+                            color: ColorConstants.instance.blue,
                           ),
-                          hintText: 'Type your message',
-                          border: InputBorder.none,
                         ),
+                        hintText: 'Type your message',
+                        border: InputBorder.none,
                       ),
                     ),
                   ),

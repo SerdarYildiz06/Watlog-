@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:watlog/utils/widget/chart.dart';
 
-import '../utils/colors.dart';
-import '../utils/widget/phone_log_card.dart';
-import 'daily_chart_page.dart';
+import '../../utils/colors.dart';
+import '../chart/daily_chart_view.dart';
+import 'daily_statics.dart';
 
-class SpecialChartView extends StatelessWidget {
-  const SpecialChartView({
+class SpecialStatics extends StatelessWidget {
+  const SpecialStatics({
     super.key,
   });
 
@@ -20,7 +20,7 @@ class SpecialChartView extends StatelessWidget {
             shrinkWrap: true,
             itemCount: 3,
             itemBuilder: (context, index) {
-              return const PhoneLogCard();
+              return const TimeSpendCard();
             },
           ),
           const SizedBox(height: 20),

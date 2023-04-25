@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:watlog/utils/widget/chart.dart';
 
-import '../utils/colors.dart';
-import 'daily_chart_page.dart';
+import '../../utils/colors.dart';
+import '../chart/daily_chart_view.dart';
 
 class DailyStatics extends StatelessWidget {
   const DailyStatics({

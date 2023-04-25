@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:watlog/utils/widget/custom_button.dart';
 import '../utils/colors.dart';
-import 'compare_numbers_view.dart';
 
 class BuyPremiumView extends StatefulWidget {
   const BuyPremiumView({super.key});
@@ -336,7 +335,7 @@ class _BuyPremiumViewState extends State<BuyPremiumView> {
                   CustomButton(
                     text: 'CONTINUE',
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const CompareNumbersView()));
+                      Navigator.pushNamed(context, "compare-numbers");
                     },
                   ),
                 ],

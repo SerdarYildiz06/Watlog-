@@ -60,7 +60,7 @@ class SettingView extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {
-                  Navigator.pushNamed(context, 'help_center');
+                  Navigator.pushNamed(context, 'help-center');
                 },
                 title: Text(
                   'Help Center',
@@ -95,7 +95,7 @@ class SettingView extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {
-                  Navigator.pushNamed(context, '/premium');
+                  Navigator.pushNamed(context, 'premium');
                 },
                 title: Text(
                   'Buy Premium',

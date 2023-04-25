@@ -1,15 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:watlog/utils/colors.dart';
+import 'package:watlog/utils/widget/card_phone.dart';
 import 'package:watlog/utils/widget/custom_button.dart';
-import 'package:watlog/view/special_chart_view.dart';
-import 'package:watlog/view/weekly_chart_view.dart';
-
-import '../utils/colors.dart';
-import '../utils/widget/card_phone.dart';
-import 'daily_chart_page.dart';
+import 'package:watlog/view/chart/special_chart_view.dart';
+import 'package:watlog/view/chart/weekly_chart_view.dart';
+import 'chart/daily_chart_view.dart';
+import 'dart:math';
 
 class CompareNumbersView extends StatefulWidget {
   const CompareNumbersView({super.key});
@@ -72,131 +70,13 @@ final List<DateTimeRange> bigDataList = getRandomSampleDataList();
 
 class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTickerProviderStateMixin {
   TabController? _tabController;
-  TextEditingController? _dateController;
-  final CupertinoDatePickerMode _datePickerMode = CupertinoDatePickerMode.dateAndTime;
   final DateTime _selectedDate = DateTime.now();
-
-  // void _showMyDialog() {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         backgroundColor: const Color(0xff232323),
-  //         title: const Text(
-  //           'Select Date',
-  //           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-  //         ),
-  //         content: SizedBox(
-  //           width: double.infinity,
-  //           height: MediaQuery.of(context).size.height * 0.2,
-  //           child: Column(
-  //             children: [
-  //               Expanded(
-  //                 child: Theme(
-  //                   data: ThemeData(
-  //                     cupertinoOverrideTheme: const CupertinoThemeData(
-  //                       textTheme: CupertinoTextThemeData(
-  //                         dateTimePickerTextStyle: TextStyle(
-  //                           color: Colors.white,
-  //                         ),
-  //                       ),
-  //                     ),
-  //                   ),
-  //                   child: CupertinoDatePicker(
-  //                     initialDateTime: _selectedDate,
-  //                     onDateTimeChanged: (dateTime) {},
-  //                   ),
-  //                 ),
-  //               ),
-  //               const SizedBox(height: 16),
-  //               ElevatedButton(
-  //                 onPressed: () {
-  //                   // Do something with the selected date
-  //                   print('Selected date: $_selectedDate');
-  //                   Navigator.of(context).pop();
-  //                 },
-  //                 child: const Text('OK'),
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //         contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
-  //       );
-  //     },
-  //   );
-  // }
-  // void _showMyDialog() {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         backgroundColor: const Color(0xff232323),
-  //         contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-  //         title: Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //           children: [
-  //             const Text(
-  //               'Selected Date',
-  //               textAlign: TextAlign.center,
-  //               style: TextStyle(
-  //                 fontWeight: FontWeight.bold,
-  //                 color: Colors.white,
-  //                 fontSize: 18,
-  //               ),
-  //             ),
-  //             IconButton(
-  //               icon: const Icon(
-  //                 Icons.close,
-  //                 color: Colors.white,
-  //               ),
-  //               onPressed: () {
-  //                 Navigator.of(context).pop();
-  //               },
-  //             ),
-  //           ],
-  //         ),
-  //         actions: const [],
-  //         content: SizedBox(
-  //           width: MediaQuery.of(context).size.width,
-  //           height: MediaQuery.of(context).size.height * 0.2,
-  //           child: Column(
-  //             children: [
-  //               const SizedBox(
-  //                 height: 20,
-  //               ),
-  //               Expanded(
-  //                 child: Theme(
-  //                   data: ThemeData(
-  //                     cupertinoOverrideTheme: const CupertinoThemeData(
-  //                       textTheme: CupertinoTextThemeData(
-  //                         dateTimePickerTextStyle: TextStyle(
-  //                           color: Colors.white,
-  //                         ),
-  //                       ),
-  //                     ),
-  //                   ),
-  //                   child: CupertinoDatePicker(
-  //                     use24hFormat: true,
-  //                     initialDateTime: _selectedDate,
-  //                     onDateTimeChanged: (dateTime) {},
-  //                   ),
-  //                 ),
-  //               ),
-  //               const SizedBox(height: 16),
-  //               CustomButton(text: "Selected", onPressed: () {})
-  //             ],
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
   void _showMyDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: const Color(0xff232323),
+          backgroundColor: ColorConstants.instance.cardBackgroundColor,
           title: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -212,9 +92,6 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                   ),
                 ),
               ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
               const Text('Selected Date', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(
                 height: 10,
@@ -251,11 +128,11 @@ class _CompareNumbersViewState extends State<CompareNumbersView> with SingleTick
                   ),
                 ),
                 const SizedBox(height: 15),
-                CustomButton(text: "Selected", onPressed: () {}),
-                // const SizedBox(
-                //   height: 20,
-                //   child: SizedBox.shrink(),
-                // )
+                CustomButton(
+                    text: "Selected",
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    }),
               ],
             ),
           ),

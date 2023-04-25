@@ -21,4 +21,5 @@ class ColorConstants {
   final Color orange = const Color(0xFFef8f36);
   final Color chatBubleBlue = const Color(0xFFdbebfd);
   final Color darGreen = const Color(0xFF175220);
+  final Color divederColor = const Color(0xff383838);
 }
