@@ -37,8 +37,6 @@ class DailyChart extends StatelessWidget {
           Chart(
             data: chartData,
           ),
-          const FlutterLogo(),
-
           // Chart(
           //   data: chartData2,
           // ),

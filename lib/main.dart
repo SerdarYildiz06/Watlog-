@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             'person': (context) => const PersonsView(),
           },
           debugShowCheckedModeBanner: false,
-          title: 'First Method',
+          title: 'WatLog',
           theme: darkTheme,
           home: child,
         );
